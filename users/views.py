@@ -10,7 +10,7 @@ def register(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful. You're now logged in.")
-            return redirect('home')
+            return redirect('landing')
     else:
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
@@ -21,7 +21,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('home')
+            return redirect('landing')
         else:
             messages.error(request, "Invalid username or password.")
             return redirect('login_page')
